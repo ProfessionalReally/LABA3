@@ -8,10 +8,11 @@ using namespace std;
 class Figure
 {
 private:
+
 	int figure = 0; //Фигура
 	int color = 0; //Цвет
 public:
-	
+
 	Figure(); //Конструктор
 
 	~Figure(); //Деструктор

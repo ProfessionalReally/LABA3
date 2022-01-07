@@ -44,6 +44,12 @@ void Music::OutputMusic() //Вывод данных о музыке
 	printf_s("\n");
 }
 
+void Music::DeleteMusic() //Удаление музыки
+{
+	this->title = "";
+	this->executor = "";
+}
+
 Music::~Music() //Деструктор
 {
 	;

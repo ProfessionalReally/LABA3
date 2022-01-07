@@ -6,16 +6,32 @@
 #include <string>
 #include <locale.h>
 
+
 using namespace std;
-class SetAccount
+class Account
 {
 private:
+	//ACCOUNT
 	string name = ""; //Имя
 	string surname = ""; //Фамилия
 	string email = ""; //Почта
 	string password = ""; //Пароль
 public:
-	SetAccount(); //Конструктор
+	//FIGURE
+	int FigureFigure = 0; //Фигура
+	int FigureColor = 0; //Цвет
+	//FRIENDS
+	string FriendsName[2]; //Имя
+	string FriendsSurname[2]; //Фамилия
+	//MUSIC
+	string MusicTitle[2]; //Название
+	string MusicExecutor[2]; //Исполнитель
+	//MESSAGES
+	string MessagestoWhom = ""; //Кому сообщение
+	string MessagesfromWhom = ""; //От кого сообщение
+	string Messagesmessage = ""; //Текст сообщения
+
+	Account(); //Конструктор
 
 	// Функции получения данных из полей
 	string Getname();
@@ -23,7 +39,7 @@ public:
 	string Getemail();
 	string Getpassword();
 
-	~SetAccount(); //Деструктор
+	~Account(); //Деструктор
 
 	void InitAccount(string NAME, string SURNAME, string EMAIL, string PASSWORD); //Инициализация аккаунта
 
@@ -32,6 +48,8 @@ public:
 	void OutputAccount(); //Вывод данных о аккаунте
 
 	void DeleteAccount(); //Удаление данных о аккаунта
+
+
 };
 
 

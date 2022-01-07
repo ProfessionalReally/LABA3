@@ -51,6 +51,12 @@ void Figure::OutputFigure() //Вывод данных о фигуре
 	printf_s("\n");
 }
 
+void Figure::DeleteFigure() //Удаление фигуры
+{
+	this->figure = 0;
+	this->color = 0;
+}
+
 Figure::~Figure() //Деструктор
 {
 	;

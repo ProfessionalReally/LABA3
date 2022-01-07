@@ -1,15 +1,15 @@
-﻿#include "SetAccount.h"
+﻿#include "Account.h"
 #include "Figure.h"
 #include "Friends.h"
 #include "Music.h"
-#include "Exit.h"
+#include "Messages.h"
 #include "string"
 #include "Windows.h"
 int menu()
 {
 	int i;
 	system("cls");
-	printf_s("  1) SetAccount\n  2) Figure\n  3) Friends\n  4) Music\n  5) Exit and Delete\n  0) Exit the program\n\n  Choose: ");
+	printf_s("  1) Account\n  2) Figure\n  3) Friends\n  4) Music\n  5) Messages\n  0) Exit the program\n\n  Choose: ");
 	scanf_s("%d", &i);
 	return i;
 }
@@ -21,7 +21,7 @@ int main()
 	string surnameA = "Petrov"; //Фамилия
 	string emailA = "Petrov22@gmail.com"; //Почта
 	string passwordA = "111222333"; //Пароль
-	SetAccount* User = new SetAccount;
+	Account* User = new Account;
 	//Figure
 	int figure = 2;
 	int color = 1;
@@ -38,12 +38,18 @@ int main()
 	Music* Like2 = new Music;
 	LikeMAS[0] = *Like1;
 	LikeMAS[1] = *Like2;
+	//Messages
+	string toWhom = "Ivan Ivanov"; //Кому сообщение
+	string fromWhom = "Anton Petrov"; //От кого сообщение
+	string message = "Hello!"; //Текст сообщения
+	Messages* Letter = new Messages;
 
 	int g = 0; //Флаг
 	int f = 1; //Флаг
 	int n; //Для выбора действий
 	int l; //Для выбора действий
 
+	
 	do
 	{
 		switch (menu())
@@ -58,7 +64,7 @@ int main()
 			do
 			{
 				system("cls");
-				printf_s("\n  1 - Initialization\n  2 - Input\n  3 - Output\n  0 - Exit\n\n  Choose: ");
+				printf_s("\n  1 - Initialization\n  2 - Input\n  3 - Output\n  4 - Delete\n  0 - Exit\n\n  Choose: ");
 				scanf_s("%d", &n);
 				if (n == 1)
 				{
@@ -75,6 +81,20 @@ int main()
 					(*User).OutputAccount();
 					system("pause");
 				}
+				if (n == 4)
+				{
+					(*User).DeleteAccount();
+					View->DeleteFigure();
+					for (int i = 0; i < 2; i++) 
+					{
+						Human[i].DeleteFriends();
+						LikeMAS[i].DeleteMusic();
+					}
+					Letter->DeleteMessages();
+					system("cls");
+					printf_s("\n DELETED!!!\n\n");
+					system("pause");
+				}
 			} while (n != 0);
 			break;
 		}
@@ -89,10 +109,14 @@ int main()
 					if (n == 1)
 					{
 						View->InitFigure(figure, color);
+						(*User).FigureFigure = View->Getfigure();
+						(*User).FigureColor = View->Getcolor();
 					}
 					if (n == 2)
 					{
 						View->InputFigure();
+						(*User).FigureFigure = View->Getfigure();
+						(*User).FigureColor = View->Getcolor();
 					}
 					if (n == 3)
 					{
@@ -102,6 +126,8 @@ int main()
 					if (n == 4)
 					{
 						View->DeleteFigure();
+						(*User).FigureFigure = View->Getfigure();
+						(*User).FigureColor = View->Getcolor();
 						system("cls");
 						printf_s("\n DELETED!!!\n\n");
 						system("pause");
@@ -127,6 +153,8 @@ int main()
 						scanf_s("%d", &l);
 						} while ((l < 1) || (l > 2));
 						Human[l-1].InitFriends(nameF, surnameF);
+						(*User).FriendsName[l-1] = Human[l-1].Getname();
+						(*User).FriendsSurname[l - 1] = Human[l - 1].Getsurname();
 					}
 					if (n == 2)
 					{
@@ -136,6 +164,8 @@ int main()
 						scanf_s("%d", &l);
 						} while ((l < 1) || (l > 2));
 						Human[l-1].InputFriends();
+						(*User).FriendsName[l - 1] = Human[l - 1].Getname();
+						(*User).FriendsSurname[l - 1] = Human[l - 1].Getsurname();
 					}
 					if (n == 3)
 					{
@@ -153,6 +183,8 @@ int main()
 							scanf_s("%d", &l);
 						} while ((l < 1) || (l > 2));
 						Human[l-1].DeleteFriends();
+						(*User).FriendsName[l - 1] = Human[l - 1].Getname();
+						(*User).FriendsSurname[l - 1] = Human[l - 1].Getsurname();
 						system("cls");
 						printf_s("\n DELETED!!!\n\n");
 						system("pause");
@@ -177,6 +209,8 @@ int main()
 							scanf_s("%d", &l);
 						} while ((l < 1) || (l > 2));
 						LikeMAS[l-1].MUSICinit(executor, title);
+						(*User).MusicExecutor[l-1] = LikeMAS[l-1].Getexecutor();
+						(*User).MusicTitle[l-1] = LikeMAS[l-1].Gettitle();
 					}
 					if (n == 2)
 					{
@@ -186,6 +220,8 @@ int main()
 						scanf_s("%d", &l);
 						} while ((l < 1) || (l > 2));
 						LikeMAS[l-1].MUSICinput();
+						(*User).MusicExecutor[l - 1] = LikeMAS[l - 1].Getexecutor();
+						(*User).MusicTitle[l - 1] = LikeMAS[l - 1].Gettitle();
 					}
 					if (n == 3)
 					{
@@ -203,6 +239,8 @@ int main()
 						scanf_s("%d", &l);
 						} while ((l < 1) || (l > 2));
 						LikeMAS[l-1].DeleteMusic();
+						(*User).MusicExecutor[l - 1] = LikeMAS[l - 1].Getexecutor();
+						(*User).MusicTitle[l - 1] = LikeMAS[l - 1].Gettitle();
 						system("cls");
 						printf_s("\n DELETED!!!\n\n");
 						system("pause");
@@ -211,28 +249,45 @@ int main()
 			}
 			break;
 		}
-		case 5: //Удаление и выход из аккаунта
+		case 5: //Сообщения
 		{
-			do
-			{
-				system("cls");
-				printf_s("\n  1 - Delete and Exit\n  0 - Exit\n\n  Choose: ");
-				scanf_s("%d", &n);
-				if (n == 1)
+			if (g) {
+				do
 				{
-					(*User).DeleteAccount();
-					View->DeleteFigure();
-					for (int i = 0; i < 2; i++)
-					{
-						Human[i].DeleteFriends();
-						LikeMAS[i].DeleteMusic();
-					}
 					system("cls");
-					printf_s("\n DELETED!!!\n\n");
-					system("pause");
-					g = 0;
-				}
-			} while (n != 0);
+					printf_s("\n  1 - Initialization\n  2 - Input\n  3 - Output\n  4 - Delete\n  0 - Exit\n\n  Choose: ");
+					scanf_s("%d", &n);
+					if (n == 1)
+					{
+						Letter->InitMessages(toWhom, fromWhom, message);
+						(*User).MessagestoWhom = Letter->GettoWhom();
+						(*User).MessagesfromWhom = Letter->GetfromWhom();
+						(*User).Messagesmessage = Letter->Getmessage();
+					}
+					if (n == 2)
+					{
+						Letter->InputMessages();
+						(*User).MessagestoWhom = Letter->GettoWhom();
+						(*User).MessagesfromWhom = Letter->GetfromWhom();
+						(*User).Messagesmessage = Letter->Getmessage();
+					}
+					if (n == 3)
+					{
+						Letter->OutputMessages();
+						system("pause");
+					}
+					if (n == 4)
+					{
+						Letter->DeleteMessages();
+						(*User).MessagestoWhom = Letter->GettoWhom();
+						(*User).MessagesfromWhom = Letter->GetfromWhom();
+						(*User).Messagesmessage = Letter->Getmessage();
+						system("cls");
+						printf_s("\n DELETED!!!\n\n");
+						system("pause");
+					}
+				} while (n != 0);
+			}
 			break;
 		}
 		}
@@ -241,5 +296,6 @@ int main()
 	delete View;
 	delete Like1;
 	delete Like2;
+	delete Letter;
 	delete[] Human;
 }

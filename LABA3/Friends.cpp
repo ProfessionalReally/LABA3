@@ -46,6 +46,13 @@ void Friends::OutputFriends() //Вывод данных о друзьях
 	printf_s("\n");
 }
 
+void Friends::DeleteFriends() //Удаление друзей
+{
+	this->name = "";
+	this->surname = "";
+}
+
+
 Friends::~Friends() //Деструктор
 {
 	;

@@ -139,19 +139,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Exit.cpp" />
     <ClCompile Include="Figure.cpp" />
     <ClCompile Include="Friends.cpp" />
     <ClCompile Include="LABA3.cpp" />
+    <ClCompile Include="Messages.cpp" />
     <ClCompile Include="Music.cpp" />
-    <ClCompile Include="SetAccount.cpp" />
+    <ClCompile Include="Account.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Exit.h" />
     <ClInclude Include="Figure.h" />
     <ClInclude Include="Friends.h" />
+    <ClInclude Include="Messages.h" />
     <ClInclude Include="Music.h" />
-    <ClInclude Include="SetAccount.h" />
+    <ClInclude Include="Account.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

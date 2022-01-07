@@ -18,7 +18,7 @@
     <ClCompile Include="LABA3.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="SetAccount.cpp">
+    <ClCompile Include="Account.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Figure.cpp">
@@ -30,12 +30,12 @@
     <ClCompile Include="Music.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Exit.cpp">
+    <ClCompile Include="Messages.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SetAccount.h">
+    <ClInclude Include="Account.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Figure.h">
@@ -47,8 +47,11 @@
     <ClInclude Include="Music.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Exit.h">
+    <ClInclude Include="Messages.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
